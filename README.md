@@ -1,0 +1,6 @@
+Rotas no postman![Rota5-parte2](https://github.com/TamirisCarv/pizzaria-js-rotas/assets/114781501/7950fecc-1d35-4efb-bf5c-bb347434d2c5)
+![Rota5](https://github.com/TamirisCarv/pizzaria-js-rotas/assets/114781501/00001819-ca61-4000-b858-4ea317f21016)
+![Rota4](https://github.com/TamirisCarv/pizzaria-js-rotas/assets/114781501/5a55dfba-f3e9-42d7-853e-00a4e0b1f6ff)
+![Rota3](https://github.com/TamirisCarv/pizzaria-js-rotas/assets/114781501/7f8ac034-61cb-47b7-968c-3103b0a26f98)
+![Rota2](https://github.com/TamirisCarv/pizzaria-js-rotas/assets/114781501/670507e7-cfe4-4229-b89d-042e45902bc7)
+![Rota1](https://github.com/TamirisCarv/pizzaria-js-rotas/assets/114781501/981dfbf8-8226-4f62-bebd-bbb8c1fd54d7)
