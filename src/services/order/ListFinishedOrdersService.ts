@@ -1,5 +1,3 @@
-// ListFinishedOrdersService.ts
-
 import prismaClient from "../../prisma";
 
 interface FinishedOrdersRequest {

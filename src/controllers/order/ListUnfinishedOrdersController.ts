@@ -1,5 +1,3 @@
-// ListUnfinishedOrdersController.ts
-
 import { Request, Response } from 'express';
 import { ListUnfinishedOrdersService } from '../../services/order/ListUnfinishedOrdersService';
 

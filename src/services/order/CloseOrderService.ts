@@ -1,4 +1,3 @@
-// services/order/CloseOrderService.ts
 
 import prismaClient from "../../prisma";
 

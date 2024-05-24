@@ -1,5 +1,3 @@
-// ListFinishedOrdersController.ts
-
 import { Request, Response } from 'express';
 import { ListFinishedOrdersService } from '../../services/order/ListFinishedOrdersService';
 
