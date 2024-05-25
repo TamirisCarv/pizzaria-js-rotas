@@ -1,43 +1,52 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-import './index.css';
+import { FormEvent } from "react";
+import axios from "axios";
+import "./index.css";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        if (username === '' || password === '') {
-            setError('Por favor, preencha todos os campos.');
-            return;
-        }
-
-        // Aqui você pode adicionar a lógica de autenticação, por exemplo, chamar uma API.
-        if (username === 'admin' && password === 'admin') {
-            console.log('Usuário autenticado com sucesso.');
-            setError('');
-            // Redirecionar ou realizar outras ações após o login bem-sucedido.
-        } else {
-            setError('Nome de usuário ou senha incorretos.');
-        }
-    };
+    const router = useRouter();
+ 
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [error, setError] = useState("");
+ 
+  async function doLogin(formEvent: FormEvent) {
+    formEvent.preventDefault();
+ 
+    if (email === "" || senha === "") {
+      setError("Preencha todos os campos!");
+      return;
+    }
+ 
+    const response = await axios.post("http://localhost:3333/session", {
+      email: email,
+      senha: senha,
+    });
+    if (response.status === 200) {
+      localStorage.setItem("session", response.data.token);
+      router.push("/");
+    } else {
+      setError(response.data.error);
+    }
+  }
+    
     return (
         <div className="login-background">
             <div className="login-container">
                 <div className="login-content">
                     <h2>Login</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={doLogin}>
                         <div className="form-group">
                             <input
                                 type="text"
                                 id="username"
                                 placeholder="E-mail"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
                                 required
                             />
                         </div>
@@ -46,8 +55,8 @@ export default function Login() {
                                 type="password"
                                 id="password"
                                 placeholder="Senha"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                value={senha}
+                                onChange={(event) => setSenha(event.target.value)}
                                 required
                             />
                         </div>
