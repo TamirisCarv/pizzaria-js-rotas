@@ -15,7 +15,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
  
-  async function doLogin(formEvent: FormEvent) {
+  async function doCadastro(formEvent: FormEvent) {
     formEvent.preventDefault();
  
     if (nome === "" || email === "" || senha === "") {
@@ -23,13 +23,15 @@ export default function Login() {
       return;
     }
  
-    const response = await axios.post("http://localhost:3333/session", {
+    const response = await axios.post("http://localhost:3333/user", {
       email: email,
       senha: senha,
+      nome: nome,
     });
+
     if (response.status === 200) {
       localStorage.setItem("session", response.data.token);
-      router.push("/");
+      router.push("/login");
     } else {
       setError(response.data.error);
     }
@@ -40,7 +42,17 @@ export default function Login() {
             <div className="login-container">
                 <div className="login-content">
                     <h2>Login</h2>
-                    <form onSubmit={doLogin}>
+                    <form onSubmit={doCadastro}>
+                    <div className="form-group">
+                            <input
+                                type="text"
+                                id="nome"
+                                placeholder="Nome"
+                                value={nome}
+                                onChange={(event) => setNome(event.target.value)}
+                                required
+                            />
+                        </div>
                         <div className="form-group">
                             <input
                                 type="text"
