@@ -11,13 +11,14 @@ export default function Login() {
     const router = useRouter();
  
   const [email, setEmail] = useState("");
+  const [nome, setNome] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
  
   async function doLogin(formEvent: FormEvent) {
     formEvent.preventDefault();
  
-    if (email === "" || senha === "") {
+    if (nome === "" || email === "" || senha === "") {
       setError("Preencha todos os campos!");
       return;
     }
@@ -28,7 +29,7 @@ export default function Login() {
     });
     if (response.status === 200) {
       localStorage.setItem("session", response.data.token);
-      router.push("./cadastro");
+      router.push("/");
     } else {
       setError(response.data.error);
     }
@@ -63,11 +64,8 @@ export default function Login() {
                         {error && <div className="error-message">{error}</div>}
                         <button type="submit"> Login </button>
                     </form>
-                    
-                    <Link className="link" href={"/cadastro"}>
-                    Ainda não é cadastrado? Cadastre-se!
-            </Link>
-                    
+                   
+                    <a href="#">Ainda não é cadastrado? Cadastra-se</a>
                 </div>
             </div>
             <div className="right-panel">
