@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import { FormEvent } from "react";
 import axios from "axios";
@@ -16,9 +15,16 @@ export default function Login() {
  
     async function doLogin(formEvent: FormEvent) {
         formEvent.preventDefault();
- 
-        if (email === "" || senha === "") {
-            setError("Preencha todos os campos!");
+
+        // Validação do email
+        if (!isValidEmail(email)) {
+            setError("Email inválido!Utilize o formato aaa@aaa.com");
+            return;
+        }
+
+        // Validação da senha
+        if (senha.length < 5) {
+            setError("A senha deve ter pelo menos 5 caracteres!");
             return;
         }
  
@@ -37,6 +43,12 @@ export default function Login() {
         } catch (error) {
             setError("Erro ao fazer login. Verifique suas credenciais.");
         }
+    }
+
+    // Função para validar o formato básico de email
+    function isValidEmail(email: string) {
+        // Regex para verificar o formato básico de um email
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
     
     return (
@@ -66,7 +78,7 @@ export default function Login() {
                             />
                         </div>
                         {error && <div className="error-message">{error}</div>}
-                        <button type="submit"> Login </button>
+                        <button type="submit">Login</button>
                     </form>
                     
                     <Link className="link" href={"/cadastro"}>
