@@ -22,6 +22,7 @@ import { CloseOrderController } from './controllers/order/CloseOrderController';
 import uploadConfig from './config/multer';
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { AddItemController } from './controllers/order/AddItemController';
+import { GetProductImageController } from './controllers/product/GetProductImageController';
 
 const router = Router();
 
@@ -45,6 +46,6 @@ router.get('/orders/unfinished', isAuthenticated, new ListUnfinishedOrdersContro
 router.get('/orders/finished', isAuthenticated, new ListFinishedOrdersController().handle);
 router.put('/orders/finish', isAuthenticated, new UpdateOrderStatusController().handle);
 router.put('/order/close', isAuthenticated, new CloseOrderController().handle);
-
+router.get('/product/image', new GetProductImageController().handle);
 
 export { router };

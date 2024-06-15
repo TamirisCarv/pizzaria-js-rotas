@@ -12,7 +12,12 @@ const product= await prismaClient.produto.findMany({
     }
 })
 
-return product;
+return product.map(p => {
+    return {
+                ...p,
+                url: 'http://localhost:3333/product/image?product_id=' +p.id
+    }
+});
  }
 }
 
