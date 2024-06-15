@@ -1,4 +1,4 @@
-'use client'; // Adicione isso no topo do arquivo
+'use client';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -24,12 +24,18 @@ const ProductList = ({ categoryId }: ProductListProps) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('Token não encontrado. Faça login novamente.');
+        }
+
         const response = await axios.get('http://localhost:3333/category/product', {
           params: { id_categoria: categoryId },
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21lIjoiVGFtaXJpcyIsInVzdWFyaW8iOiJ0YW1pcmkxMjNAZ21haWwuY29tIiwiaWF0IjoxNzE4NDQ1MTA2LCJleHAiOjE3MjEwMzcxMDYsInN1YiI6IjFiMzM5OGFlLWI2Y2EtNGUyMS1hYmNkLTc2YjRjN2UwOTY2YiJ9.PKURnAs1Nbk0-Y1gMwGIkwoO5QF3odiSyROw60--cPU')}`, // Ajuste conforme a forma de autenticação que você estiver usando
+            Authorization: `Bearer ${token}`,
           },
         });
+
         setProducts(response.data);
       } catch (error) {
         console.error('Erro ao buscar produtos:', error);
