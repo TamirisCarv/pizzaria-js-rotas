@@ -7,7 +7,7 @@ import "./index.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function Login() {
+export default function Cadastro() {
     const router = useRouter();
  
   const [email, setEmail] = useState("");
@@ -41,7 +41,7 @@ export default function Login() {
         <div className="login-background">
             <div className="login-container">
                 <div className="login-content">
-                    <h2>Login</h2>
+                    <h2>Cadastro</h2>
                     <form onSubmit={doCadastro}>
                     <div className="form-group">
                             <input
@@ -74,16 +74,18 @@ export default function Login() {
                             />
                         </div>
                         {error && <div className="error-message">{error}</div>}
-                        <button type="submit"> Login </button>
+                        <button type="submit"> Cadastro </button>
                     </form>
                    
-                    <a href="#">Ainda não é cadastrado? Cadastra-se</a>
+                   <Link className="link" href={"/login"}>
+                    Já é cadastrado? Faça login!
+            </Link>
                 </div>
             </div>
             <div className="right-panel">
-                <h2>Bem-vindo ao autêntico sabor italiano!</h2>
-                <p>Entre e descubra o sabor da tradição em cada fatia</p>
-                <a href="#">LEIA MAIS</a>
+               
+               
+               
             </div>
         </div>
     );

@@ -8,8 +8,21 @@ body {
     height: 100vh;
     background-color: #000;
     font-weight: 700;
+    background-image: url('https://img.freepik.com/free-photo/pepperoni-pizza-with-olives-wooden-board_140725-5374.jpg?t=st=1717870794~exp=1717874394~hmac=31316820f1feaac7a1eff1695f271889bfaeaf59b5ed65c67448e949a42ec9ca&w=740');
+    background-size: auto 860px;
+    background-repeat: no-repeat;
+    background-position: 0 -100px;
 }
-
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(244, 46, 9, 0.);
+    z-index: 1;
+}
 .login-background {
     display: flex;
     width: 100%;
@@ -18,34 +31,40 @@ body {
 }
 
 .login-container {
-    background-color: #111;
+    background-color: #000;
     padding: 2rem;
-    width: 40%;
+    width: 50%;
     height: 100%;
     display: flex;
-    justify-content: center; /* Centraliza o contêiner filho verticalmente */
-    align-items: center; /* Centraliza o contêiner filho horizontalmente */
-    margin: 0; /* Remove qualquer margem */
-    position: absolute; /* Faz o contêiner ficar colado ao lado esquerdo */
-    left: 0; /* Alinha o contêiner ao lado esquerdo da tela */
+    justify-content: center; 
+    align-items: center; 
+    margin: 0; 
+    position: absolute; 
+    right: 0; /* Alinha o contêiner ao lado direito da tela */
 }
 
 .login-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo dentro do contêiner filho */
-    width: 100%; /* Garante que o contêiner filho ocupe a largura completa do contêiner pai */
+    align-items: center;
+    width: 100%;
+    margin-left: -100px;
+}
+.login-content h2{
+    margin-left:150px;
 }
 
 h2 {
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 40px;
+    color:#f42e09
+   
 }
 
 .form-group {
     margin-bottom: 1rem;
-    width: 100%; /* Garante que os campos de entrada ocupem a largura completa do contêiner */
+    width: 160%;
 }
 
 input[type="text"],
@@ -54,16 +73,16 @@ input[type="password"] {
     padding: 1rem;
     margin: 0.5rem 0;
     box-sizing: border-box;
-    background-color: #333;
+    background-color: #1b1b1b;
     border: none;
     border-radius: 5px;
     color: #fff;
 }
 
 button {
-    width: 100%;
+    width: 160%;
     padding: 1rem;
-    background-color: #bb9469;
+    background-color: #f42e09;
     border: none;
     border-radius: 5px;
     color: white;
@@ -78,15 +97,16 @@ button:hover {
 .error-message {
     color: red;
     margin-bottom: 1rem;
-    text-align: center; /* Centraliza o texto */
+    text-align: center;
 }
 
 .login-container a {
-    color: #bb9469;
+    color: #f42e09;
     text-decoration: none;
     display: block;
     margin: 1rem 0;
-    text-align: center; /* Centraliza o texto */
+    text-align: center;
+    margin-left: 140px;
 }
 
 .login-container a:hover {
@@ -95,14 +115,18 @@ button:hover {
 
 .right-panel {
     background-size: cover;
-  
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
     padding: 2rem;
-    margin-left: 500px;
+    position: center;
+    z-index: 3;
+
+    background-size: 100%;
+    margin-left:-650px;
+    left: 0;
 }
 
 .right-panel h2 {
@@ -118,4 +142,8 @@ button:hover {
 .right-panel a {
     color: #bb9469;
     text-decoration: none;
+    margin-left: 200px;
+}
+a .link{
+    margin-left: 200px;
 }

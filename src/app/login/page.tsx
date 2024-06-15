@@ -10,29 +10,34 @@ import Link from "next/link";
 export default function Login() {
     const router = useRouter();
  
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [error, setError] = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const [error, setError] = useState("");
  
-  async function doLogin(formEvent: FormEvent) {
-    formEvent.preventDefault();
+    async function doLogin(formEvent: FormEvent) {
+        formEvent.preventDefault();
  
-    if (email === "" || senha === "") {
-      setError("Preencha todos os campos!");
-      return;
+        if (email === "" || senha === "") {
+            setError("Preencha todos os campos!");
+            return;
+        }
+ 
+        try {
+            const response = await axios.post("http://localhost:3333/session", {
+                email: email,
+                senha: senha,
+            });
+
+            if (response.status === 200) {
+                localStorage.setItem("token", response.data.token);
+                router.push("./pizza");
+            } else {
+                setError(response.data.error);
+            }
+        } catch (error) {
+            setError("Erro ao fazer login. Verifique suas credenciais.");
+        }
     }
- 
-    const response = await axios.post("http://localhost:3333/session", {
-      email: email,
-      senha: senha,
-    });
-    if (response.status === 200) {
-      localStorage.setItem("session", response.data.token);
-      router.push("./cadastro");
-    } else {
-      setError(response.data.error);
-    }
-  }
     
     return (
         <div className="login-background">
@@ -65,17 +70,10 @@ export default function Login() {
                     </form>
                     
                     <Link className="link" href={"/cadastro"}>
-                    Ainda não é cadastrado? Cadastre-se!
-            </Link>
-                    
+                        Ainda não é cadastrado? Cadastre-se!
+                    </Link>
                 </div>
-            </div>
-            <div className="right-panel">
-                <h2>Bem-vindo ao autêntico sabor italiano!</h2>
-                <p>Entre e descubra o sabor da tradição em cada fatia</p>
-                <a href="#">LEIA MAIS</a>
             </div>
         </div>
     );
-
 }
