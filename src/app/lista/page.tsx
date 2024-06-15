@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import "./index.css";
+import Link from "next/link";
 
 // Definindo a interface do produto
 interface Product {
@@ -46,17 +48,25 @@ const ProductList = ({ categoryId }: ProductListProps) => {
   }, [categoryId]);
 
   return (
-    <div>
-      <h2>Produtos da Categoria</h2>
-      <ul>
+    <div className="product-list-container">
+      <h2 className="product-list-title">Produtos da Categoria</h2>
+      <ul className="product-list">
         {products.map(product => (
-          <li key={product.id}>
+          <li key={product.id} className="product-item">
             <img src={product.url} alt={product.nome} width="100" height="100" />
             <h3>{product.nome}</h3>
             <p>{product.descricao}</p>
             <p>Preço: {product.preco}</p>
           </li>
         ))}
+        <li className="product-item add-product-item">
+          
+
+              <Link className="link" href="/pizza" >
+        Cadastrar Pizza
+      </Link>
+         
+        </li>
       </ul>
     </div>
   );

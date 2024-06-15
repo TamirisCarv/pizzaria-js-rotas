@@ -1,15 +1,18 @@
 'use client';
+
 import React, { useState } from 'react';
 import axios from 'axios';
+import Link from "next/link";
+import "./index.css"; // Assumindo que você salva o CSS acima em um arquivo chamado index.css
 
 export default function ProductForm() {
   const [nome, setNome] = useState('');
   const [descricao, setDescricao] = useState('');
   const [preco, setPreco] = useState('');
-  const [id_categoria, setIdCategoria] = useState('9cc068e7-df7a-49b5-8829-28c27b7594af'); // Deixe vazio inicialmente
+  const [id_categoria, setIdCategoria] = useState('9cc068e7-df7a-49b5-8829-28c27b7594af');
   const [banner, setBanner] = useState<File | null>(null);
-  const [error, setError] = useState<string | null>(null); // Use null para indicar nenhum erro
-  const [success, setSuccess] = useState<string | null>(null); // Use null para indicar nenhum sucesso
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -47,25 +50,25 @@ export default function ProductForm() {
 
       if (response.status === 200) {
         setSuccess('Produto cadastrado com sucesso');
-        setError(null); // Limpa o erro
+        setError(null);
         setNome('');
         setDescricao('');
         setPreco('');
         setBanner(null);
       } else {
         setError('Erro ao cadastrar produto');
-        setSuccess(null); // Limpa o sucesso
+        setSuccess(null);
       }
     } catch (error) {
       console.error('Erro ao cadastrar produto:');
       setError(`Erro ao cadastrar produto:`);
-      setSuccess(null); // Limpa o sucesso
+      setSuccess(null);
     }
   };
 
   return (
-    <div>
-      <h2>Cadastrar Produto</h2>
+    <div className="login-container">
+      <h2>Cadastrar Pizza</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {success && <p style={{ color: 'green' }}>{success}</p>}
       <form onSubmit={handleSubmit}>
@@ -91,6 +94,9 @@ export default function ProductForm() {
         </div>
         <button type="submit">Cadastrar</button>
       </form>
+      <Link className="link" href="/lista">
+        Ver pizzas cadastradas
+      </Link>
     </div>
   );
 }

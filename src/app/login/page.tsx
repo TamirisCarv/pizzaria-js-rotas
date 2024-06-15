@@ -30,7 +30,7 @@ export default function Login() {
 
             if (response.status === 200) {
                 localStorage.setItem("token", response.data.token);
-                router.push("./pizza");
+                router.push("./homepage");
             } else {
                 setError(response.data.error);
             }

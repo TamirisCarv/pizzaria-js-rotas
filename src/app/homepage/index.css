@@ -1,0 +1,127 @@
+/* index.css */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1b1b1b;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .home-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f42e09;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  
+  .nav a:hover {
+    color: #fe8c78;
+  }
+  
+  .banner {
+    width: 100%;
+    flex: 1;
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #444;
+  }
+  
+  .banner-title {
+    font-size: 3rem;
+    color: #f42e09;
+    margin-bottom: 10px;
+  }
+  
+  .banner-slogan {
+    font-size: 1.5rem;
+  }
+  
+  .menu {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #f42e09;
+  }
+  
+  .menu-title {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 800;
+  }
+  
+  .menu-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .menu-item {
+    background-color: #000;
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .menu-item img {
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .menu-item h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .menu-item p {
+    font-size: 1rem;
+  }
+  
+  .menu-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  .footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
